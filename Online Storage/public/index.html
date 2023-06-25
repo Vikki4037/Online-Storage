@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Online Storage</title>
+</head>
+
+<body>
+
+    <!-- Upload animation making -->
+    <div class="uploadAnimation">
+        <div class="iconContainer">
+            <ion-icon name="cloud-upload-outline" id="uploadingIcon"></ion-icon>
+            <div class="progressBar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Title Section -->
+    <div class="title">
+        <h1>Online Storage</h1>
+    </div>
+
+    <!-- File or Folder selection icons  -->
+    <div class="icons">
+        <label id="addBtn">
+            <ion-icon name="add-outline"></ion-icon>
+        </label>
+        <label for="folderSelected">
+            <ion-icon name="folder-open-outline"></ion-icon>
+            <input type="file" id="folderSelected" webkitdirectory multiple />
+        </label>
+        <label for="fileSelected">
+            <ion-icon name="document-outline"></ion-icon>
+            <input type="file" id="fileSelected">
+        </label>
+        <label id="UploadBtn">
+            <ion-icon name="cloud-upload-outline"></ion-icon>
+        </label>
+    </div>
+
+    <div class="container"></div>
+    
+    <button id="Backbtn">Back</button>
+    
+    
+    <script src="./js/index.js" type="module"></script>
+    <script src="./js/folderingNode.js" type="module"></script>
+    <script src="./js/cookies.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #30303A;
+}
+
+.title {
+    margin-top: 20px;
+    background: #ffffff1a;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 12px 0;
+}
+
+.title h1 {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.icons {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    z-index: 10;
+}
+
+.icons input {
+    display: none;
+}
+
+.icons label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #35B7FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.icons label:nth-child(1) {
+    z-index: 12;
+}
+
+.icons label:nth-child(2),
+.icons label:nth-child(3),
+.icons span:nth-child(4) {
+    z-index: 11;
+}
+
+
+.icons label ion-icon {
+    font-size: 24px;
+    color: #000;
+    transition: 0.5s;
+}
+
+
+.icons.activated label:nth-child(1) ion-icon {
+    transform: rotate(45deg);
+}
+
+.icons.activated label:nth-child(2) {
+    top: -60px;
+}
+
+.icons.activated label:nth-child(3) {
+    top: -120px;
+}
+
+.icons.activated label:nth-child(4) {
+    display: none;
+}
+
+.icons.activated label:nth-child(4).activated {
+    display: flex;
+    top: -60px;
+    left: -60px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 8px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:1080px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media screen and (max-width:540px) {
+    .container {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+.folder,
+.file {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    border-radius: 5px;
+    gap: 0.5rem;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.folder {
+    background: #ffffff1a;
+    cursor: pointer;
+}
+
+.folder:hover {
+    background: #51515A;
+}
+
+.file {
+    background: #192734;
+    justify-content: space-between;
+    z-index: 3;
+    height: max-content;
+}
+
+.file .wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.file #download {
+    background: #1DA1F2;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    color: #000;
+    z-index: 4;
+    text-decoration: none;
+}
+
+.file:hover {
+    background: #22303c;
+}
+
+.folder ion-icon,
+.file ion-icon {
+    font-size: 24px;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.file .wrap .label span {
+    overflow: clip;
+    display: flex;
+    height: max-content;
+}
+
+.file .wrap .label {
+    padding: 15px 0;
+    height: 100%;
+}
+
+.folder .label {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    overflow: hidden;
+}
+
+.folder .label span {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.folder .label span:nth-child(1) {
+    font-size: 0.8rem;
+}
+
+.folder .label span:nth-child(2) {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#Backbtn {
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    background: #35B7FF;
+    color: #000;
+    border: none;
+    outline: none;
+    align-self: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.uploadAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    z-index: 50;
+}
+
+.uploadAnimation.activate {
+    display: flex;
+}
+
+.uploadAnimation .iconContainer {
+    width: 180px;
+    height: 100px;
+    background: #192734;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.uploadAnimation .iconContainer ion-icon {
+    font-size: 32px;
+    color: #1DA1F2;
+}
+
+.uploadAnimation .iconContainer .progressBar {
+    width: 80%;
+    height: 4px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.uploadAnimation .iconContainer .progress {
+    content: '';
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    background: #1DA1F2;
+    width: 20%;
+    height: 4px;
+    border-radius: 20px;
+}
